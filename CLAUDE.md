@@ -55,7 +55,7 @@ FMC_Website/
 
 | 項目 | 現状 | 備考 |
 |------|------|------|
-| 代表メールアドレス | `info@example.com` | 確定後に差し替え |
+| 代表メールアドレス | `info@fmc-co.net` | 確定済み |
 | OGP画像 | 未作成 | `<meta property="og:image">` は仮のまま |
 | Favicon | 未作成 | `<link rel="icon">` は仮のまま |
 
