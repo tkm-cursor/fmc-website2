@@ -166,33 +166,50 @@ body.is-ready .page-loader {
   }
 }
 
-.logo-art {
-  display: block;
-  width: 104px;
-  aspect-ratio: 795 / 245;
-  overflow: hidden;
-  background-color: var(--white);
-  background-image: url("uploads/og-tide-rings.png");
-  background-repeat: no-repeat;
-  background-position: 11% 33%;
-  background-size: 218% 371%;
+.logo-mark {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+  color: currentColor;
+  font-family: var(--font-en);
+  font-size: 31px;
+  font-weight: 700;
+  line-height: .9;
+  letter-spacing: -.08em;
 }
 
-.loader-logo-art {
-  width: min(260px, 68vw);
-  box-shadow: 0 18px 60px rgba(7, 63, 75, .09);
+.logo-letters {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  transform: scaleX(1.04);
+  transform-origin: left center;
 }
 
-.header-logo-art {
-  width: 104px;
+.logo-line {
+  position: absolute;
+  z-index: 2;
+  left: -2px;
+  right: -12px;
+  top: 48%;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--aqua), var(--mint) 62%, var(--sun));
+  transform: rotate(2deg) scaleX(0);
+  transform-origin: left center;
 }
 
-.footer-logo-art {
-  width: 118px;
+body.is-ready .logo-line,
+.loader-mark .logo-line {
+  animation: draw-logo .75s cubic-bezier(.22, 1, .36, 1) .08s forwards;
 }
 
-.hero-logo-art {
-  width: min(720px, 92vw);
+.loader-mark {
+  font-size: 56px;
+}
+
+@keyframes draw-logo {
+  to { transform: rotate(2deg) scaleX(1); }
 }
 
 .brand-lockup {
@@ -202,7 +219,7 @@ body.is-ready .page-loader {
 }
 
 .brand-tagline {
-  margin-top: 2px;
+  margin-top: -2px;
   font-size: 8px;
   font-weight: 600;
   line-height: 1;
@@ -215,9 +232,7 @@ body.is-ready .page-loader {
   z-index: 100;
   inset: 0 0 auto;
   height: var(--header-height);
-  color: var(--ink);
-  background: rgba(255, 255, 255, .96);
-  box-shadow: 0 1px 0 var(--line);
+  color: var(--white);
   transition: color .3s ease, background-color .3s ease, box-shadow .3s ease;
 }
 
@@ -470,8 +485,31 @@ body.is-ready .page-loader {
 
 .hero-wordmark {
   position: relative;
-  width: min(720px, 92vw);
+  width: max-content;
   margin-top: 74px;
+  color: var(--white);
+  font-family: var(--font-en);
+  font-size: clamp(116px, 39vw, 210px);
+  font-weight: 700;
+  line-height: .7;
+  letter-spacing: -.105em;
+}
+
+.hero-wordmark span {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-wordmark i {
+  position: absolute;
+  z-index: 2;
+  left: -3vw;
+  right: -12vw;
+  top: 48%;
+  height: 4px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--aqua), var(--mint) 64%, var(--sun));
+  transform: rotate(1.5deg);
 }
 
 .hero-message {
@@ -1310,6 +1348,11 @@ body.is-ready .page-loader {
   background: #021f26;
 }
 
+.footer-brand .logo-mark {
+  color: var(--white);
+  font-size: 34px;
+}
+
 .footer-top > p {
   margin: 22px 0 32px;
   color: rgba(255, 255, 255, .5);
@@ -1406,7 +1449,12 @@ body.is-ready .page-loader {
     background: transparent;
   }
 
-  .site-header .nav-contact:hover {
+  .site-header:not(.is-scrolled) .nav-contact:hover {
+    color: var(--ink);
+    background: var(--white);
+  }
+
+  .site-header.is-scrolled .nav-contact:hover {
     color: var(--white);
     background: var(--ink);
   }
@@ -1433,11 +1481,13 @@ body.is-ready .page-loader {
   .hero-wordmark {
     grid-column: 1 / -1;
     margin-top: 42px;
-    width: min(720px, 62vw);
+    font-size: clamp(210px, 24vw, 340px);
   }
 
-  .hero-logo-art {
-    width: min(720px, 62vw);
+  .hero-wordmark i {
+    left: -6vw;
+    right: -18vw;
+    height: 5px;
   }
 
   .hero-message {
@@ -1765,11 +1815,7 @@ body.is-ready .page-loader {
   }
 
   .hero-wordmark {
-    width: min(290px, 88vw);
-  }
-
-  .hero-logo-art {
-    width: min(290px, 88vw);
+    font-size: 105px;
   }
 
   .hero h1 {
